@@ -97,6 +97,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     </style>
 </head>
+<script type="text/javascript">
+$(function(){
+    var dtToday = new Date();
+ 
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+     day = '0' + day.toString();
+    var maxDate = year + '-' + month + '-' + day;
+    $('#inputdate').attr('min', maxDate);
+});
+</script>
 
 <body>
     <header>
@@ -146,7 +161,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <option value="Jawad">Jawad</option>
             </select>
             <label for="daycount">Drop date:</label>
-            <input type="date" name="dropdate" id="" placeholder="dd/mm/yyyy">
+            <input type="date" name="dropdate" id="inputdate" placeholder="dd/mm/yyyy">
             <label for="mobile">Mobile:</label>
             <input type="number" id="mobile" placeholder="Mobile number" name="mobile" required>
             <label for="email">E-mail:</label>
